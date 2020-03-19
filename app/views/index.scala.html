@@ -1,0 +1,57 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@(lists: List[Social],formShare:Form[UserShare], sharePost:Call)(implicit request: Request[_])
+
+@*
+ * Call the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Welcome to Play") {
+ <div class="row d-flex container">
+  <div class="col-md-12">
+   <div class="card-hover-shadow-2x mb-3 card">
+    <div class="card-header-tab card-header">
+     <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+      <i class="fa fa-book"></i>
+       &nbsp;Hi, @{request.session.get("username").head.split("@").head}
+     </div>
+    </div>
+    <div class="scroll-area-sm">
+
+      <div style="position: static;" class="ps ps--active-y">
+       <div class="ps-content">
+        <ul class=" list-group list-group-flush">
+         @for(p <- lists) {
+          <li class="list-group-item">
+           <div class="todo-indicator bg-primary"></div>
+           <div class="widget-content p-0">
+            <div class="widget-content-wrapper">
+             <div class="widget-content-left">
+              <div class="widget-subheading"><i>@p.email.split("@").head share:</i></div>
+              <div class="widget-heading">
+                @p.share
+              </div>
+             </div>
+            </div>
+           </div>
+          </li>
+         }
+        </ul>
+       </div>
+      </div>
+
+    </div>
+    <div class="d-block text-right card-footer">
+    @helper.form(sharePost) {
+     <textarea class="form-control" id="content-share" name="share"></textarea>
+     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="submit-content" required autofocus>Share</button>
+    }
+    </div>
+   </div>
+  </div>
+ </div>
+
+}

@@ -1,0 +1,11 @@
+@(form:Form[UserLogin],url:Call)(implicit request: Request[_])
+
+@helper.form(url){
+
+    @helper.CSRF.formField
+    <h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
+
+    <input type="email" class="form-control" placeholder="Email address" name="email" style="margin-bottom: 20px" required autofocus>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng nhập</button>
+}
