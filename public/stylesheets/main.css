@@ -181,3 +181,11 @@ i {
     margin-left: 94%;
 }
 
+#title-web {
+    display: block;
+    text-align: center;
+    padding-left: 2%;
+    margin-bottom: 10px;
+    margin-top: -45px;
+}
+
